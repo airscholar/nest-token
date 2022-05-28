@@ -1,0 +1,26 @@
+service: auth-service
+
+useDotenv: true
+
+plugins: 
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+  environment:
+    DATABASE_URL= ${env:DATABASE_URL}
+    AT-secret= ${env:ATsecret}
+    RT-secret= ${env:RTsecret}
+    JWT-secret= ${env:JWTsecret}
+  
+functions:
+  main:
+    handler: dist/serverless.handler
+    events:
+      - http:
+          method: ANY
+          path: /
+      - http:
+          method: ANY
+          path: '{proxy+}'

@@ -125,14 +125,14 @@ export class AuthService {
           sub: userId,
           email,
         },
-        { secret: this.config.get('AT-secret'), expiresIn: 60 * 15 }, // 15 minutes
+        { secret: this.config.get('ATsecret'), expiresIn: 60 * 15 }, // 15 minutes
       ),
       this.jwtService.signAsync(
         {
           sub: userId,
           email,
         },
-        { secret: this.config.get('RT-secret'), expiresIn: 60 * 60 * 24 * 7 }, // 7 days
+        { secret: this.config.get('RTsecret'), expiresIn: 60 * 60 * 24 * 7 }, // 7 days
       ),
     ]);
 
