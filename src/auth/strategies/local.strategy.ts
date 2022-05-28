@@ -9,7 +9,7 @@ export class LocalStrategy extends PassportStrategy(Strategy, 'local') {
   constructor(private authService: AuthService, config: ConfigService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      secretOrKey: config.get('JWT-secret'),
+      secretOrKey: config.get('JWTsecret'),
     });
   }
 
